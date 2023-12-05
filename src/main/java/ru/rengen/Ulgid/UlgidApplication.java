@@ -1,0 +1,13 @@
+package ru.rengen.Ulgid;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class UlgidApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(UlgidApplication.class, args);
+	}
+
+}
