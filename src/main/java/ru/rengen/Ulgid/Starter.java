@@ -13,10 +13,10 @@ import ru.rengen.Ulgid.telegram.UlgidBot;
 @Component
 public class Starter {
     @Autowired
-    public Starter(BotConfig config) {
+    public Starter(UlgidBot bot) {
         try {
             TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
-            telegramBotsApi.registerBot(new UlgidBot(config));
+            telegramBotsApi.registerBot(bot);
             log.info("Stars is successful. Bot is working");
         }
         catch (TelegramApiException e) {
