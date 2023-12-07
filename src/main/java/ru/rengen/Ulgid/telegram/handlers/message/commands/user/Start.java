@@ -5,7 +5,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 
 @Component
-public class Start extends UserCommand {
+public class Start implements UserCommand {
 
     @Override
     public String getCommand() {
