@@ -1,15 +1,13 @@
-package ru.rengen.Ulgid.config;
+package ru.rengen.Ulgid.telegram.config;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
-@EnableScheduling
 @Getter
-@PropertySource("botInfo.yaml")
+@PropertySource("botInfo.propirties")
 public class BotConfig {
 
     @Value("${name}")
@@ -18,6 +16,6 @@ public class BotConfig {
     @Value("${token}")
     String token;
 
-    @Value("${owner}")
-    Long ownerId;
+    @Value("${admin}")
+    Long admin;
 }
