@@ -11,6 +11,7 @@ public class HelpUser extends BaseHelp
         implements UserCommand {
     @Autowired
     private HelpUser(List<UserCommand> list) {
+        list.add(this);
         commands = getCommands(list);
     }
 }

@@ -7,7 +7,7 @@ public interface Command {
     String getCommand();
     SendMessage doSomethings(Message message);
     String description(); // description of command for help
-    default Boolean hidden(){
-        return false;
+    default Integer level(){
+        return 0;
     }
 }
