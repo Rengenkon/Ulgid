@@ -5,12 +5,8 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 
 import java.util.List;
 
-public class BaseHelp implements Command {
+public abstract class BaseHelp implements Command {
     protected String commands;
-
-    protected BaseHelp(){
-        commands = "";
-    }
 
     @Override
     public String getCommand() {

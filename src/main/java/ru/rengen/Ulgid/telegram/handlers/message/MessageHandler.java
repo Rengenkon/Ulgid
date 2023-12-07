@@ -10,6 +10,10 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.rengen.Ulgid.telegram.handlers.Handler;
 import ru.rengen.Ulgid.telegram.handlers.message.commands.Command;
+import ru.rengen.Ulgid.telegram.handlers.message.commands.CommandList;
+import ru.rengen.Ulgid.telegram.handlers.roles.Admin;
+import ru.rengen.Ulgid.telegram.handlers.roles.Role;
+import ru.rengen.Ulgid.telegram.handlers.roles.User;
 
 import java.util.List;
 import java.util.Map;
@@ -19,12 +23,11 @@ import java.util.stream.Collectors;
 @Component
 @Slf4j
 public class MessageHandler implements Handler {
-    private final Map<String, Command> commands;
-//    private final Map<Role, Map<String, Command>>  roleCommands;
+    private Map<String, Map<String, Command>>  roleCommands;
 
     @Autowired
-    private MessageHandler(List<Command> commands) {
-        this.commands = commands.stream().collect(Collectors.toMap(Command::getCommand, command -> command));
+    private MessageHandler(List<CommandList> commands) {
+        roleCommands = commands.stream().collect(Collectors.toMap(group -> group.getRole().getName(), CommandList::getCommands));
     }
 
     @Override
@@ -37,7 +40,12 @@ public class MessageHandler implements Handler {
         Message message = (Message) object;
         String text = message.getText();
 
+        String role = new User().getName();
+        var commands = roleCommands.get(role);
+
+
         //выделение команды
+
 
         if (commands.containsKey(text)) {
             SendMessage msg = commands.get(text).doSomethings(message);

@@ -7,10 +7,10 @@ import ru.rengen.Ulgid.telegram.handlers.message.commands.BaseHelp;
 import java.util.List;
 
 @Component
-public class Help extends BaseHelp
-                    implements CompanyCommand{
+public class HelpCompany extends BaseHelp
+        implements CompanyCommand{
     @Autowired
-    private Help(List<CompanyCommand> list) {
+    private HelpCompany(List<CompanyCommand> list) {
         commands = getCommands(list);
     }
 }
