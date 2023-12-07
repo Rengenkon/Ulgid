@@ -9,7 +9,8 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.rengen.Ulgid.telegram.handlers.Handler;
-import ru.rengen.Ulgid.telegram.handlers.message.commands.BaseCommand;
+import ru.rengen.Ulgid.telegram.handlers.message.commands.Command;
+
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -18,11 +19,12 @@ import java.util.stream.Collectors;
 @Component
 @Slf4j
 public class MessageHandler implements Handler {
-    private final Map<String, BaseCommand> commands;
+    private final Map<String, Command> commands;
+//    private final Map<Role, Map<String, Command>>  roleCommands;
 
     @Autowired
-    private MessageHandler(List<BaseCommand> commands) {
-        this.commands = commands.stream().collect(Collectors.toMap(BaseCommand::getCommand, command -> command));
+    private MessageHandler(List<Command> commands) {
+        this.commands = commands.stream().collect(Collectors.toMap(Command::getCommand, command -> command));
     }
 
     @Override

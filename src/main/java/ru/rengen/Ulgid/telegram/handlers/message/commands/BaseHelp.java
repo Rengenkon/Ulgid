@@ -5,10 +5,10 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 
 import java.util.List;
 
-public class Help extends BaseCommand {
+public class BaseHelp implements Command {
     protected String commands;
 
-    protected Help(){
+    protected BaseHelp(){
         commands = "";
     }
 
