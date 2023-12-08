@@ -8,12 +8,11 @@ import java.util.Map;
 @Component
 public class MyState {
     private static final int LENGTH = 2;
-    private Map<Long, String> states;
-    private final String DEFAULT_STATE;
+    private final String DEFAULT_STATE = User.getState();
+    private Map<Long, String> states = new HashMap<>();
 
-    private MyState() {
-        states = new HashMap<>();
-        DEFAULT_STATE = User.getState();
+    public void setState(Long id, Role state) {
+        states.put(id, state.getName());
     }
 
     public void addState(Long id, String state) {
@@ -34,7 +33,7 @@ public class MyState {
             state = DEFAULT_STATE;
             states.put(id, state);
         }
-        return state.substring(state.length() - 1 - LENGTH);
+        return state.substring(state.length() - LENGTH);
     }
 
     public boolean isSimple(Long id) {

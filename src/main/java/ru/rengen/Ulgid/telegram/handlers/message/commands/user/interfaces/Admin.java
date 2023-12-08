@@ -6,7 +6,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import ru.rengen.Ulgid.telegram.handlers.message.commands.user.UserCommand;
 
 @Component
-public class Admin implements UserCommand, Interface {
+public class Admin extends Interface implements UserCommand {
     @Override
     public String getCommand() {
         return "/admin";
@@ -18,12 +18,16 @@ public class Admin implements UserCommand, Interface {
     }
 
     @Override
-    public SendMessage doSomethings(Message message) {
-        return null;
+    public Integer level() {
+        return 1;
     }
 
     @Override
-    public Integer level() {
-        return 1;
+    public SendMessage doSomethings(Message message) {
+        switcher.admin(message.getChatId());
+        return SendMessage.builder()
+                .text("Переключение режима")
+                .chatId(message.getChatId())
+                .build();
     }
 }

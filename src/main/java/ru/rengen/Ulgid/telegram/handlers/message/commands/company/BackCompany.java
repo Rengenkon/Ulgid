@@ -1,11 +1,16 @@
 package ru.rengen.Ulgid.telegram.handlers.message.commands.company;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
+import ru.rengen.Ulgid.telegram.logic.IntarfaceSwitcher;
 
 @Component
 public class BackCompany implements CompanyCommand{
+    @Autowired
+    IntarfaceSwitcher switcher;
+
     @Override
     public String getCommand() {
         return "/user";
@@ -18,6 +23,10 @@ public class BackCompany implements CompanyCommand{
 
     @Override
     public SendMessage doSomethings(Message message) {
-        return null;
+        switcher.user(message.getChatId());
+        return SendMessage.builder()
+                .text("Переключение режима")
+                .chatId(message.getChatId())
+                .build();
     }
 }

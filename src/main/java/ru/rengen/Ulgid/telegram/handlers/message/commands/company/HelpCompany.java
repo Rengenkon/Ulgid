@@ -11,6 +11,7 @@ public class HelpCompany extends BaseHelp
         implements CompanyCommand{
     @Autowired
     private HelpCompany(List<CompanyCommand> list) {
+        list.add(this);
         commands = getCommands(list);
     }
 }

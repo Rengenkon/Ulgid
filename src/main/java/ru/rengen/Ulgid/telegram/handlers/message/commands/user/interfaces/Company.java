@@ -6,7 +6,7 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import ru.rengen.Ulgid.telegram.handlers.message.commands.user.UserCommand;
 
 @Component
-public class Company implements UserCommand, Interface {
+public class Company extends Interface implements UserCommand {
     @Override
     public String getCommand() {
         return "/company";
@@ -19,6 +19,10 @@ public class Company implements UserCommand, Interface {
 
     @Override
     public SendMessage doSomethings(Message message) {
-        return null;
+        switcher.company(message.getChatId());
+        return SendMessage.builder()
+                .text("Переключение режима")
+                .chatId(message.getChatId())
+                .build();
     }
 }
