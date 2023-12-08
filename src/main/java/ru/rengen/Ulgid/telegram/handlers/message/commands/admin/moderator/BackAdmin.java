@@ -5,12 +5,12 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import ru.rengen.Ulgid.telegram.handlers.message.commands.admin.AdminCommand;
-import ru.rengen.Ulgid.telegram.logic.IntarfaceSwitcher;
+import ru.rengen.Ulgid.telegram.logic.SwitcherInterface;
 
 @Component
 public class BackAdmin implements AdminCommand {
     @Autowired
-    IntarfaceSwitcher switcher;
+    SwitcherInterface switcher;
 
     @Override
     public String getCommand() {

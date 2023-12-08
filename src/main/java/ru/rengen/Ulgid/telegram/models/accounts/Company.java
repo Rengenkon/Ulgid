@@ -1,13 +1,14 @@
 package ru.rengen.Ulgid.telegram.models.accounts;
 
+import lombok.Data;
 import ru.rengen.Ulgid.telegram.models.WorkTime;
 
+@Data
 public class Company extends AccountTelegram{
     /*
     Команда в отдельной таблице М-М
     Таблица одобренных компаний
      */
-    Long ID;
     Long founderId;
     String name;
     String description;
@@ -24,18 +25,5 @@ public class Company extends AccountTelegram{
         this.name = name;
         this.description = description;
         this.founderId = founderId;
-    }
-
-    public void addMan(){
-        if (this.getID().equals(founderId)){
-
-        }
-    }
-    public void requestApprove() {
-
-    }
-
-    public void edit(){
-
     }
 }

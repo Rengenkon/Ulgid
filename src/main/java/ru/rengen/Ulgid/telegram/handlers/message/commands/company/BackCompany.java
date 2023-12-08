@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
-import ru.rengen.Ulgid.telegram.logic.IntarfaceSwitcher;
+import ru.rengen.Ulgid.telegram.logic.SwitcherInterface;
 
 @Component
 public class BackCompany implements CompanyCommand{
     @Autowired
-    IntarfaceSwitcher switcher;
+    SwitcherInterface switcher;
 
     @Override
     public String getCommand() {

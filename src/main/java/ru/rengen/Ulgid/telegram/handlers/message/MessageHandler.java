@@ -12,6 +12,7 @@ import ru.rengen.Ulgid.telegram.handlers.Handler;
 import ru.rengen.Ulgid.telegram.handlers.message.commands.Command;
 import ru.rengen.Ulgid.telegram.handlers.message.commands.CommandList;
 import ru.rengen.Ulgid.telegram.handlers.states.*;
+import ru.rengen.Ulgid.telegram.handlers.states.mappers.RootMapper;
 
 import java.util.List;
 import java.util.Map;
@@ -23,12 +24,15 @@ import java.util.stream.Collectors;
 public class MessageHandler implements Handler {
     private MyState states;
     private Map<String, Map<String, Command>>  roleCommands;
+    private RootMapper rootMapper;
 
 
     @Autowired
-    private MessageHandler(List<CommandList> commands, MyState states) {
-        roleCommands = commands.stream().collect(Collectors.toMap(group -> group.getRole().getName(), CommandList::getCommands));
+    private MessageHandler(List<CommandList> commands, MyState states, RootMapper rootMapper) {
+        //Переписать CommandList, сделать мапу внатри
+        roleCommands = commands.stream().collect(Collectors.toMap(group -> group.getRole(), CommandList::getCommands));
         this.states = states;
+        this.rootMapper = rootMapper;
     }
 
     @Override
@@ -39,29 +43,41 @@ public class MessageHandler implements Handler {
     @Override
     public void parse(TelegramLongPollingBot bot, BotApiObject object) {
         Message message = (Message) object;
-        String text = message.getText();
+        boolean isState = false;
 
-        String state = states.getState(message.getChatId());
+        if (message.hasText()) {
+            isState = text(bot, message);
+        }
+
+
+        if (isState) {
+            rootMapper.parse(states.getAll(message.getChatId()), bot, message);
+        }
+    }
+
+    private boolean text(TelegramLongPollingBot bot, Message message) {
+        String text = message.getText();
+        String state = states.getFirstState(message.getChatId());
         var commands = roleCommands.get(state);
 
 
         //выделение команды
 
-        SendMessage msg;
-        if (commands.containsKey(text)) {
-            msg = commands.get(text).doSomethings(message);
-        } else if (states.isSimple(state)) {
-            msg = SendMessage.builder()
-                    .text("Такой команды нет")
-                    .chatId(message.getChatId())
-                    .build();
-        } else {
-            msg = StateMapper.parse(bot, message);
-        }
+
         try {
-            bot.execute(msg);
+            if (commands.containsKey(text)) {
+                bot.execute(commands.get(text).doSomethings(message));
+            } else if (states.isDefault(state)) {// В дефолтном сотоянии могут быть только команды
+                bot.execute(SendMessage.builder()
+                        .text("Такой команды нет")
+                        .chatId(message.getChatId())
+                        .build());
+            } else {
+                return true;
+            }
         } catch (TelegramApiException e) {
             log.error("Error sending message. " + e.getMessage());
         }
+        return false;
     }
 }

@@ -7,6 +7,6 @@ import java.util.Map;
 
 @Getter
 public abstract class CommandList {
-    protected Role role;
     protected Map<String, Command> commands;
+    protected String role;
 }
