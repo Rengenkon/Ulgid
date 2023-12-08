@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.rengen.Ulgid.telegram.handlers.message.commands.Command;
 import ru.rengen.Ulgid.telegram.handlers.message.commands.CommandList;
-import ru.rengen.Ulgid.telegram.handlers.roles.User;
+import ru.rengen.Ulgid.telegram.handlers.states.User;
 
 import java.util.List;
 import java.util.stream.Collectors;

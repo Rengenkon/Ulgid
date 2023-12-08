@@ -11,6 +11,7 @@ public class HelpAdmin extends BaseHelp
         implements AdminCommand {
     @Autowired
     private HelpAdmin(List<AdminCommand> list) {
+        list.add(this);
         commands = getCommands(list);
     }
 }
