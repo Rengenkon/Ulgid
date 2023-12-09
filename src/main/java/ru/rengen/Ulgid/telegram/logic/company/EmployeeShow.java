@@ -12,7 +12,7 @@ public class EmployeeShow extends CompanyLogic {
 
     @Override
     public String myState() {
-        return null;
+        return "ShEm";
     }
 
     @Override

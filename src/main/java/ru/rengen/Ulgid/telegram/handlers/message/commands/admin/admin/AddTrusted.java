@@ -1,15 +1,20 @@
 package ru.rengen.Ulgid.telegram.handlers.message.commands.admin.admin;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
-import ru.rengen.Ulgid.telegram.handlers.message.commands.admin.AdminCommand;
+import ru.rengen.Ulgid.telegram.handlers.message.commands.admin.AdminCommandsList.AdminCommand;
+import ru.rengen.Ulgid.telegram.logic.admin.AdminTrustedAdd;
 
 @Component
-public class AddTrusted implements AdminCommand {
+public class AddTrusted extends AdminCommand {
+    @Autowired
+    private AddTrusted(AdminTrustedAdd logic) {
+        this.logic = logic;
+    }
+
     @Override
     public String getCommand() {
-        return "/add-trusted";
+        return "/addtrusted";
     }
 
     @Override
@@ -20,10 +25,5 @@ public class AddTrusted implements AdminCommand {
     @Override
     public Integer level() {
         return 2;
-    }
-
-    @Override
-    public SendMessage doSomethings(Message message) {
-        return null;
     }
 }

@@ -1,12 +1,17 @@
 package ru.rengen.Ulgid.telegram.handlers.message.commands.admin.moderator;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
-import ru.rengen.Ulgid.telegram.handlers.message.commands.admin.AdminCommand;
+import ru.rengen.Ulgid.telegram.handlers.message.commands.admin.AdminCommandsList.AdminCommand;
+import ru.rengen.Ulgid.telegram.logic.admin.ModeratorApprove;
 
 @Component
-public class ApproveEvent implements AdminCommand {
+public class ApproveEvent extends AdminCommand {
+    @Autowired
+    private ApproveEvent(ModeratorApprove logic) {
+        this.logic = logic;
+    }
+
     @Override
     public String getCommand() {
         return "/approve";
@@ -15,10 +20,5 @@ public class ApproveEvent implements AdminCommand {
     @Override
     public String description() {
         return "Одобряет мероприятие на публикацию";
-    }
-
-    @Override
-    public SendMessage doSomethings(Message message) {
-        return null;
     }
 }

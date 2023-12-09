@@ -12,7 +12,7 @@ public class CompanySelect extends CompanyLogic {
 
     @Override
     public String myState() {
-        return null;
+        return "SeCo";
     }
 
     @Override

@@ -12,7 +12,7 @@ public class EventDelete extends CompanyLogic {
 
     @Override
     public String myState() {
-        return null;
+        return "DeEv";
     }
 
     @Override

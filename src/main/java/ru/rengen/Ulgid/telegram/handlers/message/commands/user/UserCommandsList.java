@@ -13,8 +13,8 @@ import java.util.stream.Collectors;
 public class UserCommandsList extends CommandList {
     public static abstract class UserCommand extends Command {}
     @Autowired
-    private UserCommandsList(List<UserCommand> commands) {
-        role = Roles.USER;
+    private UserCommandsList(List<UserCommand> commands, Roles roles) {
+        role = roles.getUSER();
         this.commands = commands.stream().collect(Collectors.toMap(Command::getCommand, command -> command));
     }
 }

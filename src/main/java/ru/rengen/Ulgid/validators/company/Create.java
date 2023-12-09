@@ -3,7 +3,7 @@ package ru.rengen.Ulgid.validators.company;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.rengen.Ulgid.telegram.models.accounts.Company;
-import ru.rengen.Ulgid.telegram.models.repositorys.company.CompanyRepository;
+import ru.rengen.Ulgid.telegram.models.repositorys.CompanyRepository;
 import ru.rengen.Ulgid.validators.Question;
 
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class Create {
 
     public String getNextState(String state) {
         return stateList.get(
-                stateList.indexOf(Integer.parseInt(state)))
+                stateList.indexOf(Integer.parseInt(state)) + 1)
                 .toString();
     }
 }

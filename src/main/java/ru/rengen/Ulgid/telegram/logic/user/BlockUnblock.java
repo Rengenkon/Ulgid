@@ -12,7 +12,7 @@ public class BlockUnblock extends UserLogic {
 
     @Override
     public String myState() {
-        return null;
+        return "BlUn";
     }
 
     @Override

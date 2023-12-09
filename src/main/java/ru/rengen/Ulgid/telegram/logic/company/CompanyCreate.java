@@ -20,7 +20,7 @@ public class CompanyCreate extends CompanyLogic {
     
     @Override
     public String myState() {
-        return "CC";
+        return "CrCo";
     }
 
     @Override
@@ -32,7 +32,7 @@ public class CompanyCreate extends CompanyLogic {
             states.addState(chatId, myState());
             String state = creator.getFirstState();
             states.addState(chatId, state);
-            text = creator.getQuestion(creator.getQuestion(state));
+            text = creator.getQuestion(state);
         }
         return SendMessage.builder()
                 .text(text)
@@ -52,21 +52,21 @@ public class CompanyCreate extends CompanyLogic {
         String state = states.removeLastState(id);
         String error = creator.validateAnswer(state, text);
         if (error == null) {
+            states.addState(id, text);
             if (creator.isFinalState(state)) {
                 create(id);
                 sendText = "Компания успешно создана";
             }else {
-                states.addState(id, text);
                 state = creator.getNextState(state);
                 states.addState(id, state);
-                sendText = creator.getQuestion(creator.getQuestion(state));
+                sendText = creator.getQuestion(state);
             }
         } else {
             sendText = error + "\n\n" + creator.getQuestion(state);
         }
         bot.execute(SendMessage.builder()
-                .chatId(id)
                 .text(sendText)
+                .chatId(id)
                 .build());
     }
 

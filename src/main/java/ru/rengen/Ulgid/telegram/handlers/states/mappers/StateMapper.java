@@ -1,5 +1,6 @@
 package ru.rengen.Ulgid.telegram.handlers.states.mappers;
 
+import lombok.Getter;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -12,9 +13,9 @@ import java.util.Iterator;
 import java.util.Map;
 
 public abstract class StateMapper {
+     @Getter
+     protected String role;
      protected Map<String, Logic> stateLogic;
-
-     public abstract String getRole();
 
      protected void setStateLogic(CommandList list) {
           stateLogic = new HashMap<>();

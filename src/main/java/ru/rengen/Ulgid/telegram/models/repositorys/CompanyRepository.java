@@ -1,4 +1,4 @@
-package ru.rengen.Ulgid.telegram.models.repositorys.company;
+package ru.rengen.Ulgid.telegram.models.repositorys;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,11 +19,17 @@ public class CompanyRepository {
     }
 
     public Company getCompany(Long id) {
+        for (Company company : list) {
+            if (company.getFounderId().equals(id)) {
+                return company;
+            }
+        }
         return null;
     }
 
     public void add(Company company) {
         list.add(company);
-        employeesRepository.add(company.getID(), company.getID());
+        var id = company.getFounderId();
+        employeesRepository.add(id, id);
     }
 }

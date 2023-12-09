@@ -14,6 +14,8 @@ public class UserLogicList extends LogicList {
     static public abstract class UserLogic extends Logic {}
     @Autowired
     private UserLogicList(List<UserLogic> logics) {
-        map = logics.stream().collect(Collectors.toMap(l -> Roles.USER, l -> l));
+        map = logics.stream().collect(Collectors.toMap(
+                Logic::myState,
+                l -> l));
     }
 }

@@ -12,7 +12,7 @@ public class EmployeeDelete extends CompanyLogic {
 
     @Override
     public String myState() {
-        return null;
+        return "DeEm";
     }
 
     @Override

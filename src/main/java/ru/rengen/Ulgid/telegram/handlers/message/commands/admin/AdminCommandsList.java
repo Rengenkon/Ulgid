@@ -13,9 +13,10 @@ import java.util.stream.Collectors;
 @Component
 @Getter
 public class AdminCommandsList extends CommandList {
+    static public abstract class AdminCommand extends Command {}
     @Autowired
-    private AdminCommandsList(List<AdminCommand> commands) {
-        role = Roles.ADMIN;
+    private AdminCommandsList(List<AdminCommand> commands, Roles roles) {
+        role = roles.getADMIN();
         this.commands = commands.stream().collect(Collectors.toMap(Command::getCommand, command -> command));
     }
 }

@@ -12,7 +12,7 @@ public class EventShowUsers extends CompanyLogic {
 
     @Override
     public String myState() {
-        return null;
+        return "ShUs";
     }
 
     @Override

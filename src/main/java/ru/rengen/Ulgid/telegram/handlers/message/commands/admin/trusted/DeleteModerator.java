@@ -1,15 +1,20 @@
 package ru.rengen.Ulgid.telegram.handlers.message.commands.admin.trusted;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
-import ru.rengen.Ulgid.telegram.handlers.message.commands.admin.AdminCommand;
+import ru.rengen.Ulgid.telegram.handlers.message.commands.admin.AdminCommandsList.AdminCommand;
+import ru.rengen.Ulgid.telegram.logic.admin.TrustedModeratorDelete;
 
 @Component
-public class DeleteModerator implements AdminCommand {
+public class DeleteModerator extends AdminCommand {
+    @Autowired
+    private DeleteModerator(TrustedModeratorDelete logic) {
+        this.logic = logic;
+    }
+
     @Override
     public String getCommand() {
-        return "/remove-mederator";
+        return "/removemederator";
     }
 
     @Override
@@ -20,10 +25,5 @@ public class DeleteModerator implements AdminCommand {
     @Override
     public Integer level() {
         return 1;
-    }
-
-    @Override
-    public SendMessage doSomethings(Message message) {
-        return null;
     }
 }

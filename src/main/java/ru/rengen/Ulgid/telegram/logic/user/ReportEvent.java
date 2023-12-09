@@ -12,7 +12,7 @@ public class ReportEvent extends UserLogic {
 
     @Override
     public String myState() {
-        return null;
+        return "RepEv";
     }
 
     @Override

@@ -1,4 +1,4 @@
-package ru.rengen.Ulgid.telegram.models.repositorys.company;
+package ru.rengen.Ulgid.telegram.models.repositorys;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;

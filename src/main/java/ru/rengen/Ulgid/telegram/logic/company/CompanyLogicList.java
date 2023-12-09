@@ -14,6 +14,8 @@ public class CompanyLogicList extends LogicList {
     public abstract static class CompanyLogic extends Logic {}
     @Autowired
     private CompanyLogicList(List<CompanyLogic> logics) {
-        map = logics.stream().collect(Collectors.toMap(l -> Roles.COMPANY, l -> l));
+        map = logics.stream().collect(Collectors.toMap(
+                Logic::myState,
+                l -> l));
     }
 }

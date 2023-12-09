@@ -12,7 +12,7 @@ public class BlockedShow extends UserLogic {
 
     @Override
     public String myState() {
-        return null;
+        return "ShBl";
     }
 
     @Override

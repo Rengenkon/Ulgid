@@ -1,18 +1,18 @@
-package ru.rengen.Ulgid.telegram.logic.company;
+package ru.rengen.Ulgid.telegram.logic.admin;
 
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import ru.rengen.Ulgid.telegram.logic.company.CompanyLogicList.CompanyLogic;
+import ru.rengen.Ulgid.telegram.logic.admin.AdminLogicList.AdminLogic;
 
 @Component
-public class EmployeeAdd extends CompanyLogic {
+public class AdminTrustedAdd extends AdminLogic {
 
     @Override
     public String myState() {
-        return "AdEm";
+        return "AdTr";
     }
 
     @Override

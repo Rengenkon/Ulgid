@@ -12,7 +12,7 @@ public class EventCreate extends CompanyLogic {
 
     @Override
     public String myState() {
-        return null;
+        return "CrEv";
     }
 
     @Override

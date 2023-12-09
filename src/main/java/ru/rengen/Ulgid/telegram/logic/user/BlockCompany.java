@@ -12,7 +12,7 @@ public class BlockCompany extends UserLogic {
 
     @Override
     public String myState() {
-        return null;
+        return "BlCo";
     }
 
     @Override

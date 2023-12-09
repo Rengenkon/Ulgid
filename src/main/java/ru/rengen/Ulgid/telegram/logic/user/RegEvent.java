@@ -12,7 +12,7 @@ public class RegEvent extends UserLogic {
 
     @Override
     public String myState() {
-        return null;
+        return "RegEv";
     }
 
     @Override

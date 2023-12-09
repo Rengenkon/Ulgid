@@ -34,7 +34,6 @@ public class UlgidBot extends TelegramLongPollingBot {
         if (update.hasMessage()) {
             handlers.get("messageHandler").parse(this, update.getMessage());
         }
-//        execute()
     }
 
     @Override

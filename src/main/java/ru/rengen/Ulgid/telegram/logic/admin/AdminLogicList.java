@@ -11,9 +11,11 @@ import java.util.stream.Collectors;
 
 @Component
 public class AdminLogicList extends LogicList {
-    public abstract class AdminLogic extends Logic {}
+    static public abstract class AdminLogic extends Logic {}
     @Autowired
     private AdminLogicList(List<AdminLogic> logics) {
-        map = logics.stream().collect(Collectors.toMap(l -> Roles.COMPANY, l -> l));
+        map = logics.stream().collect(Collectors.toMap(
+                Logic::myState,
+                l -> l));
     }
 }

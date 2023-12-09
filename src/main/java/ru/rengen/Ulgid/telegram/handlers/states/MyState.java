@@ -28,14 +28,12 @@ public class MyState {
         states.get(id).addLast(state);
     }
 
-    public String getLastState(Long id) {
-        return states.get(id).getLast();
-    }
-
     public String getFirstState(Long id) {
         var stateList = states.get(id);
-        if (stateList.isEmpty()){
+        if (stateList == null) {
+            stateList = new ArrayList<>();
             stateList.add(DEFAULT_STATES[DEFAULT_STATE]);
+            states.put(id, stateList);
         }
         return stateList.getFirst();
     }
@@ -48,14 +46,10 @@ public class MyState {
         states.remove(id);
     }
 
-    public boolean isDefault(String state) {
-        for (String def : DEFAULT_STATES) {
-            if (def.equals(state)) {
-                return true;
-            }
-        }
-        return false;
+    public boolean isDefault(Long id) {
+        return states.get(id).size() == 1;
     }
+
     public Iterator<String> getAll(Long id) {
         return states.get(id).iterator();
     }

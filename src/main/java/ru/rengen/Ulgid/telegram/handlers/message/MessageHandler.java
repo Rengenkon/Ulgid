@@ -57,8 +57,7 @@ public class MessageHandler implements Handler {
 
     private boolean text(TelegramLongPollingBot bot, Message message) {
         String text = message.getText();
-        String state = states.getFirstState(message.getChatId());
-        var commands = roleCommands.get(state);
+        var commands = roleCommands.get(states.getFirstState(message.getChatId()));
 
 
         //выделение команды
@@ -67,7 +66,7 @@ public class MessageHandler implements Handler {
         try {
             if (commands.containsKey(text)) {
                 bot.execute(commands.get(text).doSomethings(message));
-            } else if (states.isDefault(state)) {// В дефолтном сотоянии могут быть только команды
+            } else if (states.isDefault(message.getChatId())) {// В дефолтном сотоянии могут быть только команды
                 bot.execute(SendMessage.builder()
                         .text("Такой команды нет")
                         .chatId(message.getChatId())

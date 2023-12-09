@@ -12,7 +12,7 @@ public class SubscribeCompany extends UserLogic {
 
     @Override
     public String myState() {
-        return null;
+        return "SuCo";
     }
 
     @Override

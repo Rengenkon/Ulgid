@@ -12,7 +12,7 @@ public class CompanyDelete extends CompanyLogic {
 
     @Override
     public String myState() {
-        return null;
+        return "DeCo";
     }
 
     @Override

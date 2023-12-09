@@ -8,12 +8,8 @@ import ru.rengen.Ulgid.telegram.handlers.states.Roles;
 @Component
 class CompanyMapper extends StateMapper {
     @Autowired
-    private CompanyMapper(CompanyCommandsList list) {
+    private CompanyMapper(CompanyCommandsList list, Roles roles) {
+        role = roles.getCOMPANY();
         setStateLogic(list);
-    }
-
-    @Override
-    public String getRole() {
-        return Roles.COMPANY;
     }
 }
