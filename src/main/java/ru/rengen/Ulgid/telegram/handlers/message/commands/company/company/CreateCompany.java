@@ -36,6 +36,6 @@ public class CreateCompany implements CompanyCommand {
 
     @Override
     public SendMessage doSomethings(Message message) {
-        return create.first(message.getChatId());
+        return create.firstCall(message.getChatId());
     }
 }

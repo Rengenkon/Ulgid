@@ -8,7 +8,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.rengen.Ulgid.telegram.handlers.states.MyState;
 
 public abstract class Logic extends NoneState{
-    abstract protected String myState();
+    abstract public String myState();
     abstract public SendMessage firstCall(Long chatId);
     abstract public void nextCAll(TelegramLongPollingBot bot, Message message) throws TelegramApiException;
 }
