@@ -6,6 +6,7 @@ import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import ru.rengen.Ulgid.telegram.logic.company.CompanyLogicList.CompanyLogic;
 import ru.rengen.Ulgid.validators.company.Create;
 
 @Component
@@ -18,7 +19,7 @@ public class CompanyCreate extends CompanyLogic {
     }
     
     @Override
-    protected String myState() {
+    public String myState() {
         return "CC";
     }
 

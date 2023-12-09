@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class CompanyCommandsList extends CommandList {
+    public interface CompanyCommand extends Command {}
     @Autowired
     private CompanyCommandsList(List<CompanyCommand> commands) {
         role = Roles.COMPANY;

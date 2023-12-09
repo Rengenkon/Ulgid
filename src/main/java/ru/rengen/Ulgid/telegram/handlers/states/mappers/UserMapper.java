@@ -1,15 +1,15 @@
 package ru.rengen.Ulgid.telegram.handlers.states.mappers;
 
-import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.objects.Message;
+import org.springframework.beans.factory.annotation.Autowired;
+import ru.rengen.Ulgid.telegram.handlers.message.commands.company.CompanyCommandsList;
 import ru.rengen.Ulgid.telegram.handlers.states.Roles;
 
 import java.util.Iterator;
 
-public class UserMapper implements StateMapper {
-    @Override
-    public void parse(Iterator<String> iterator, TelegramLongPollingBot bot, Message message) {
-
+public class UserMapper extends StateMapper {
+    @Autowired
+    private UserMapper(CompanyCommandsList list) {
+        setStateLogic(list);
     }
 
     @Override

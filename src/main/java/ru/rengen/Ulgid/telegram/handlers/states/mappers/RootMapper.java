@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
-public class RootMapper implements StateMapper{
+public class RootMapper{
     private Map<String, StateMapper> mappers;
 
     @Autowired
@@ -19,7 +19,6 @@ public class RootMapper implements StateMapper{
         this.mappers = stateMappers.stream().collect(Collectors.toMap(StateMapper::getRole, map -> map));
     }
 
-    @Override
     public void parse(Iterator<String> iterator, TelegramLongPollingBot bot, Message message) {
         if (!iterator.hasNext()){
             throw new RuntimeException("Iterator is empty");
@@ -29,10 +28,5 @@ public class RootMapper implements StateMapper{
             throw new RuntimeException("Unknown role" + role);
         }
         mappers.get(role).parse(iterator,bot, message);
-    }
-
-    @Override
-    public String getRole() {
-        return null;
     }
 }
