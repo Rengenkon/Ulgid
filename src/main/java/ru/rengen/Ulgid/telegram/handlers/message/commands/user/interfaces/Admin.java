@@ -3,10 +3,10 @@ package ru.rengen.Ulgid.telegram.handlers.message.commands.user.interfaces;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
-import ru.rengen.Ulgid.telegram.handlers.message.commands.user.UserCommand;
+import ru.rengen.Ulgid.telegram.logic.Logic;
 
 @Component
-public class Admin extends Interface implements UserCommand {
+public class Admin extends Interface{
     @Override
     public String getCommand() {
         return "/admin";
@@ -20,6 +20,11 @@ public class Admin extends Interface implements UserCommand {
     @Override
     public Integer level() {
         return 1;
+    }
+
+    @Override
+    public Logic getLogic() {
+        return switcher;
     }
 
     @Override

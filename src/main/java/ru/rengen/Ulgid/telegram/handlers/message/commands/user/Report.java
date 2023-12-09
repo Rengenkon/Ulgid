@@ -1,11 +1,17 @@
 package ru.rengen.Ulgid.telegram.handlers.message.commands.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
+import ru.rengen.Ulgid.telegram.handlers.message.commands.user.UserCommandsList.UserCommand;
+import ru.rengen.Ulgid.telegram.logic.user.ReportEvent;
 
 @Component
-public class Report implements UserCommand{
+public class Report extends UserCommand {
+    @Autowired
+    private Report(ReportEvent logic) {
+        this.logic = logic;
+    }
+
     @Override
     public String getCommand() {
         return "/report";
@@ -14,10 +20,5 @@ public class Report implements UserCommand{
     @Override
     public String description() {
         return "Позваляет пожаловать на мероприятие или компанию";
-    }
-
-    @Override
-    public SendMessage doSomethings(Message message) {
-        return null;
     }
 }

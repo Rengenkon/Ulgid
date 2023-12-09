@@ -3,9 +3,10 @@ package ru.rengen.Ulgid.telegram.handlers.message.commands.user;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
+import ru.rengen.Ulgid.telegram.handlers.message.commands.user.UserCommandsList.UserCommand;
 
 @Component
-public class Start implements UserCommand {
+public class Start extends UserCommand {
 
     @Override
     public String getCommand() {

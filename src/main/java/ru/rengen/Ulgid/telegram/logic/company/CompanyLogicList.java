@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class CompanyLogicList extends LogicList {
-    public abstract class CompanyLogic extends Logic {}
+    public abstract static class CompanyLogic extends Logic {}
     @Autowired
     private CompanyLogicList(List<CompanyLogic> logics) {
         map = logics.stream().collect(Collectors.toMap(l -> Roles.COMPANY, l -> l));

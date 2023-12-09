@@ -1,11 +1,16 @@
 package ru.rengen.Ulgid.telegram.handlers.message.commands.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
+import ru.rengen.Ulgid.telegram.logic.user.FindEvents;
 
 @Component
-public class Find implements UserCommand {
+public class Find extends UserCommandsList.UserCommand {
+    @Autowired
+    private Find(FindEvents logic) {
+        this.logic = logic;
+    }
+
     @Override
     public String getCommand() {
         return "/find";
@@ -14,10 +19,5 @@ public class Find implements UserCommand {
     @Override
     public String description() {
         return "Выдает подборку мероприятий";
-    }
-
-    @Override
-    public SendMessage doSomethings(Message message) {
-        return null;
     }
 }

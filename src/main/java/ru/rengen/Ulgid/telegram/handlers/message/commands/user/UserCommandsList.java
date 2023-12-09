@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class UserCommandsList extends CommandList {
+    public static abstract class UserCommand extends Command {}
     @Autowired
     private UserCommandsList(List<UserCommand> commands) {
         role = Roles.USER;

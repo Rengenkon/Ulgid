@@ -7,8 +7,10 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import ru.rengen.Ulgid.telegram.logic.Logic;
 import ru.rengen.Ulgid.telegram.logic.SwitcherInterface;
 
+import static ru.rengen.Ulgid.telegram.handlers.message.commands.company.CompanyCommandsList.*;
+
 @Component
-public class BackCompany implements CompanyCommandsList.CompanyCommand{
+public class BackCompany extends CompanyCommand {
     @Autowired
     SwitcherInterface switcher;
 
@@ -24,7 +26,7 @@ public class BackCompany implements CompanyCommandsList.CompanyCommand{
 
     @Override
     public Logic getLogic() {
-        return null;
+        return switcher;
     }
 
     @Override

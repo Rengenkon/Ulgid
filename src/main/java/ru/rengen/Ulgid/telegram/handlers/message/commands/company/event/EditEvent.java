@@ -1,12 +1,17 @@
 package ru.rengen.Ulgid.telegram.handlers.message.commands.company.event;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
-import ru.rengen.Ulgid.telegram.handlers.message.commands.company.CompanyCommand;
+import ru.rengen.Ulgid.telegram.handlers.message.commands.company.CompanyCommandsList.CompanyCommand;
+import ru.rengen.Ulgid.telegram.logic.company.EventEdit;
 
 @Component
-public class EditEvent implements CompanyCommand {
+public class EditEvent extends CompanyCommand {
+    @Autowired
+    private EditEvent(EventEdit logic){
+        this.logic = logic;
+    }
+
     @Override
     public String getCommand() {
         return "/edit-event";
@@ -15,10 +20,5 @@ public class EditEvent implements CompanyCommand {
     @Override
     public String description() {
         return "Позволяет изменить мероприятие";
-    }
-
-    @Override
-    public SendMessage doSomethings(Message message) {
-        return null;
     }
 }

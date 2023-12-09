@@ -1,24 +1,24 @@
-package ru.rengen.Ulgid.telegram.handlers.message.commands.user.block;
+package ru.rengen.Ulgid.telegram.handlers.message.commands.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.rengen.Ulgid.telegram.handlers.message.commands.user.UserCommandsList.UserCommand;
-import ru.rengen.Ulgid.telegram.logic.user.BlockUnblock;
+import ru.rengen.Ulgid.telegram.logic.user.RegEvent;
 
 @Component
-public class UnBlock extends UserCommand  {
+public class Registration extends UserCommand {
     @Autowired
-    private UnBlock(BlockUnblock logic) {
+    private Registration(RegEvent logic) {
         this.logic = logic;
     }
 
     @Override
     public String getCommand() {
-        return "/unblock";
+        return "/reg";
     }
 
     @Override
     public String description() {
-        return "Позволяет раблокировать компанию";
+        return "Позволяет записаться на мероприятие";
     }
 }

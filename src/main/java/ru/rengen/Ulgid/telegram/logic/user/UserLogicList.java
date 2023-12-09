@@ -11,9 +11,9 @@ import java.util.stream.Collectors;
 
 @Component
 public class UserLogicList extends LogicList {
-    public abstract class UserLogic extends Logic {}
+    static public abstract class UserLogic extends Logic {}
     @Autowired
     private UserLogicList(List<UserLogic> logics) {
-        map = logics.stream().collect(Collectors.toMap(l -> Roles.COMPANY, l -> l));
+        map = logics.stream().collect(Collectors.toMap(l -> Roles.USER, l -> l));
     }
 }

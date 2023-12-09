@@ -1,12 +1,17 @@
 package ru.rengen.Ulgid.telegram.handlers.message.commands.user.block;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
-import ru.rengen.Ulgid.telegram.handlers.message.commands.user.UserCommand;
+import ru.rengen.Ulgid.telegram.handlers.message.commands.user.UserCommandsList.UserCommand;
+import ru.rengen.Ulgid.telegram.logic.user.BlockCompany;
 
 @Component
-public class Block implements UserCommand, Blockk {
+public class Block extends UserCommand {
+    @Autowired
+    private Block(BlockCompany logic) {
+        this.logic = logic;
+    }
+
     @Override
     public String getCommand() {
         return "/block";
@@ -15,10 +20,5 @@ public class Block implements UserCommand, Blockk {
     @Override
     public String description() {
         return "Позволяет заблокировать компанию. Заблокированная компания не показывается";
-    }
-
-    @Override
-    public SendMessage doSomethings(Message message) {
-        return null;
     }
 }
