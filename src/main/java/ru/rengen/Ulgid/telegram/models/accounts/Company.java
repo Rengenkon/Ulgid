@@ -1,9 +1,10 @@
 package ru.rengen.Ulgid.telegram.models.accounts;
 
 import lombok.Data;
+import lombok.Getter;
 import ru.rengen.Ulgid.telegram.models.WorkTime;
 
-@Data
+@Getter
 public class Company extends AccountTelegram{
     /*
     Команда в отдельной таблице М-М

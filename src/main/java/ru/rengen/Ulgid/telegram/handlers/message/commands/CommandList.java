@@ -1,7 +1,6 @@
 package ru.rengen.Ulgid.telegram.handlers.message.commands;
 
 import lombok.Getter;
-import ru.rengen.Ulgid.telegram.handlers.states.Role;
 
 import java.util.Map;
 

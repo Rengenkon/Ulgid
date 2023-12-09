@@ -1,52 +1,78 @@
 package ru.rengen.Ulgid.telegram.logic.company;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import ru.rengen.Ulgid.validators.company.Create;
 
 @Component
 public class CompanyCreate extends CompanyLogic {
-    String state = "CC";
-    String[] questions = new String[]{
-            "",
-            ""
-    };
+    private Create creator;
+    
+    @Autowired
+    private CompanyCreate(Create creator) {
+        this.creator = creator;
+    }
+    
+    @Override
+    protected String myState() {
+        return "CC";
+    }
 
     @Override
-    public SendMessage first(Long chatId) {
-        states.addState(chatId, state);
-        int number = 0;
-        states.addState(chatId, "" + number);
+    public SendMessage firstCall(Long chatId) {
+        String text;
+        if (creator.exist(chatId)) {
+            text = "У вас уже сущетвует компания";
+        }else {
+            states.addState(chatId, myState());
+            String state = creator.getFirstState();
+            states.addState(chatId, state);
+            text = creator.getQuestion(creator.getQuestion(state));
+        }
         return SendMessage.builder()
-                .text(questions[number])
+                .text(text)
                 .chatId(chatId)
                 .build();
     }
 
     @Override
-    public void second(TelegramLongPollingBot bot, Message message) {
-        Long id = message.getChatId();
-        int number = Integer.parseInt(states.getLastState(id));
-        String text = message.get
-
-
-        if (number < questions.length) {
-            states.removeLastState(id);
-            states.addState(id, text);
-            states.addState(id, "" + number);
-        } else {
-
+    public void nextCAll(TelegramLongPollingBot bot, Message message) throws TelegramApiException {
+        if (!message.hasText()){
+            //Отправил какую-то фигню
+            return;
         }
+        String sendText;
+        String text = message.getText();
+        Long id = message.getChatId();
+        String state = states.removeLastState(id);
+        String error = creator.validateAnswer(state, text);
+        if (error == null) {
+            if (creator.isFinalState(state)) {
+                create(id);
+                sendText = "Компания успешно создана";
+            }else {
+                states.addState(id, text);
+                state = creator.getNextState(state);
+                states.addState(id, state);
+                sendText = creator.getQuestion(creator.getQuestion(state));
+            }
+        } else {
+            sendText = error + "\n\n" + creator.getQuestion(state);
+        }
+        bot.execute(SendMessage.builder()
+                .chatId(id)
+                .text(sendText)
+                .build());
     }
 
-    @Override
-    public SendMessage firstCall(Long chatId) {
-
-    }
-
-    @Override
-    public void nextCAll(TelegramLongPollingBot bot, Message message) {
-
+    private void create(Long id) {
+        String description = states.removeLastState(id);
+        String name = states.removeLastState(id);
+        creator.createCompany(id, name, description);
+        states.removeLastState(id);
     }
 }
