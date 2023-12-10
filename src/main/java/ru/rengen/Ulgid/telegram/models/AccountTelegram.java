@@ -1,4 +1,4 @@
-package ru.rengen.Ulgid.telegram.models.accounts;
+package ru.rengen.Ulgid.telegram.models;
 
 import lombok.Getter;
 

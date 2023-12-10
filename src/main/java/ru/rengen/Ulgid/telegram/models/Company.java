@@ -1,25 +1,19 @@
-package ru.rengen.Ulgid.telegram.models.accounts;
+package ru.rengen.Ulgid.telegram.models;
 
 import lombok.Getter;
 import ru.rengen.Ulgid.telegram.models.WorkTime;
 
 @Getter
 public class Company {
-    /*
-    Команда в отдельной таблице М-М
-    Таблица одобренных компаний
-     */
-    Long founderId;
-    String name;
-    String description;
-    WorkTime workTime;
-    String address;
+    private Long founderId;
+    private String name;
+    private String description;
+    private WorkTime workTime;
+    private String address;
 //    String geo; геопозиция, лучше чем адрес
-    String phone;
-    String[] links;
+    private String phone;
+    private String[] links;
 
-
-    private Company(){}
 
     public Company(Long founderId, String name, String description){
         this.name = name;

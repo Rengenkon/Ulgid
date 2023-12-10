@@ -2,7 +2,7 @@ package ru.rengen.Ulgid.telegram.models.repositorys;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.rengen.Ulgid.telegram.models.accounts.Company;
+import ru.rengen.Ulgid.telegram.models.Company;
 
 import java.util.ArrayList;
 import java.util.List;

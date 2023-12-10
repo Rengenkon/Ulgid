@@ -3,7 +3,7 @@ package ru.rengen.Ulgid.validators.company;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CreateQ1 implements Create.CreateQuestion {
+public class CreateCompanyValidQ1 implements CreateCompanyValid.CreateComQuestion {
     @Override
     public Integer getNumber() {
         return 1;

@@ -7,14 +7,14 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.rengen.Ulgid.telegram.logic.company.CompanyLogicList.CompanyLogic;
-import ru.rengen.Ulgid.validators.company.Create;
+import ru.rengen.Ulgid.validators.company.CreateCompanyValid;
 
 @Component
 public class CompanyCreate extends CompanyLogic {
-    private Create creator;
+    private CreateCompanyValid creator;
     
     @Autowired
-    private CompanyCreate(Create creator) {
+    private CompanyCreate(CreateCompanyValid creator) {
         this.creator = creator;
     }
     

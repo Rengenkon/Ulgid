@@ -9,7 +9,6 @@ import ru.rengen.Ulgid.telegram.logic.company.CompanyLogicList.CompanyLogic;
 
 @Component
 public class EmployeeAdd extends CompanyLogic {
-
     @Override
     public String myState() {
         return "AdEm";
