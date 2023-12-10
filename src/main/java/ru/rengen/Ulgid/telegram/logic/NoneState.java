@@ -10,7 +10,7 @@ import ru.rengen.Ulgid.telegram.handlers.states.MyState;
 public abstract class NoneState extends Logic{
     @Override
     public String myState() {
-        return null;
+        return "";
     }
 
     @Override

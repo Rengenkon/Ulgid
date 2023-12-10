@@ -1,4 +1,4 @@
-package ru.rengen.Ulgid.validators.company;
+package ru.rengen.Ulgid.validators;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.rengen.Ulgid.telegram.models.repositorys.EventRepository;

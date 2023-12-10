@@ -7,4 +7,5 @@ import ru.rengen.Ulgid.telegram.logic.SwitcherInterface;
 public abstract class Interface extends UserCommand {
     @Autowired
     protected SwitcherInterface switcher;
+
 }

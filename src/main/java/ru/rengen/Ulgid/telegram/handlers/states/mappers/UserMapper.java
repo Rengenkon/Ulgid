@@ -8,7 +8,7 @@ import ru.rengen.Ulgid.telegram.handlers.states.Roles;
 
 import java.util.Iterator;
 
-//@Component
+@Component
 public class UserMapper extends StateMapper {
     @Autowired
     private UserMapper(UserCommandsList list, Roles roles) {

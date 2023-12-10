@@ -8,10 +8,14 @@ import java.util.List;
 
 @Component
 public class EventRepository {
-    private List<Event> list = new ArrayList<>();
+    private ArrayList<Event> list = new ArrayList<>();
 
     public void add(Event event) {
         list.add(event);
+    }
+
+    public List<Event> getEvents() {
+        return (List<Event>) list.clone();
     }
 
     public Event getEvent(Long event) {

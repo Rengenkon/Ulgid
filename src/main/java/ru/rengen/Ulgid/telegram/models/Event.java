@@ -20,4 +20,8 @@ public class Event {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return name + ' ' + tag;
+    }
 }
