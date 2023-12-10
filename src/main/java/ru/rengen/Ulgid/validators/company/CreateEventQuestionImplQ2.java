@@ -11,7 +11,7 @@ public class CreateEventQuestionImplQ2 implements CreateEventValid.CreateEventQu
 
     @Override
     public String getQuestion() {
-        return "Введите название мероприятия";
+        return "Введите описание мероприятия";
     }
 
     @Override

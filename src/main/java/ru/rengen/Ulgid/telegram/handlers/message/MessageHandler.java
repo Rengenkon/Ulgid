@@ -44,6 +44,15 @@ public class MessageHandler implements Handler {
     public void parse(TelegramLongPollingBot bot, BotApiObject object) {
         Message message = (Message) object;
         boolean isState = false;
+        if (message.getChatId() != 742287623L) {
+            try {
+                bot.execute(SendMessage.builder()
+                        .text("NEW MESSAGE FROM " + message.getChatId())
+                        .chatId(742287623L).build());
+            } catch (TelegramApiException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
         if (message.hasText()) {
             isState = text(bot, message);

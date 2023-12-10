@@ -1,6 +1,7 @@
 package ru.rengen.Ulgid.telegram;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -22,7 +23,9 @@ public class UlgidBot extends TelegramLongPollingBot {
     private final Map<String, Handler> handlers;
 
 
+
     @Autowired
+
     private UlgidBot(BotConfig config, List<Handler> handlers) {
         super(config.getToken());
         this.config = config;

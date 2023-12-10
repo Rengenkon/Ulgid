@@ -1,0 +1,16 @@
+[2023-12-10 12\:22\:43] [INFO] [ru.rengen.Ulgid.UlgidApplication] Starting UlgidApplication using Java 21.0.1 with PID 9179 (/home/rengen/Documents/Ulgid/build/classes/java/main started by rengen in /home/rengen/Documents/Ulgid)
+[2023-12-10 12\:22\:43] [INFO] [ru.rengen.Ulgid.UlgidApplication] No active profile set, falling back to 1 default profile: "default"
+[2023-12-10 12\:22\:43] [INFO] [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2023-12-10 12\:22\:43] [INFO] [org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2023-12-10 12\:22\:45] [INFO] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat initialized with port 8080 (http)
+[2023-12-10 12\:22\:45] [INFO] [org.apache.coyote.http11.Http11NioProtocol] Initializing ProtocolHandler ["http-nio-8080"]
+[2023-12-10 12\:22\:45] [INFO] [org.apache.catalina.core.StandardService] Starting service [Tomcat]
+[2023-12-10 12\:22\:45] [INFO] [org.apache.catalina.core.StandardEngine] Starting Servlet engine: [Apache Tomcat/10.1.16]
+[2023-12-10 12\:22\:45] [INFO] [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] Initializing Spring embedded WebApplicationContext
+[2023-12-10 12\:22\:45] [INFO] [org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext] Root WebApplicationContext: initialization completed in 2533 ms
+[2023-12-10 12\:22\:53] [INFO] [ru.rengen.Ulgid.Starter] Stars is successful. Bot is working
+[2023-12-10 12\:22\:54] [INFO] [org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer] LiveReload server is running on port 35729
+[2023-12-10 12\:22\:54] [INFO] [org.apache.coyote.http11.Http11NioProtocol] Starting ProtocolHandler ["http-nio-8080"]
+[2023-12-10 12\:22\:54] [INFO] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer] Tomcat started on port 8080 (http) with context path ''
+[2023-12-10 12\:22\:54] [INFO] [ru.rengen.Ulgid.UlgidApplication] Started UlgidApplication in 11.635 seconds (process running for 12.726)
+[2023-12-10 12\:23\:51] [INFO] [ru.rengen.Ulgid.telegram.handlers.message.MessageHandler] NEW MESSAGE FROM 742287623
