@@ -9,31 +9,16 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.rengen.Ulgid.telegram.handlers.Handler;
-import ru.rengen.Ulgid.telegram.handlers.message.commands.Command;
-import ru.rengen.Ulgid.telegram.handlers.message.commands.CommandList;
-import ru.rengen.Ulgid.telegram.handlers.states.*;
-import ru.rengen.Ulgid.telegram.handlers.states.mappers.RootMapper;
-
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import ru.rengen.Ulgid.telegram.handlers.states.MyState;
 
 
 @Component
 @Slf4j
 public class MessageHandler implements Handler {
-    private MyState states;
-    private Map<String, Map<String, Command>>  roleCommands;
-    private RootMapper rootMapper;
-
-
     @Autowired
-    private MessageHandler(List<CommandList> commands, MyState states, RootMapper rootMapper) {
-        //Переписать CommandList, сделать мапу внатри
-        roleCommands = commands.stream().collect(Collectors.toMap(group -> group.getRole(), CommandList::getCommands));
-        this.states = states;
-        this.rootMapper = rootMapper;
-    }
+    private MyState states;
+    @Autowired
+    private Mapper mapper;
 
     @Override
     public String getName() {
@@ -44,29 +29,19 @@ public class MessageHandler implements Handler {
     public void parse(TelegramLongPollingBot bot, BotApiObject object) {
         Message message = (Message) object;
         boolean isState = false;
-        if (message.getChatId() != 742287623L) {
-            try {
-                bot.execute(SendMessage.builder()
-                        .text("NEW MESSAGE FROM " + message.getChatId())
-                        .chatId(742287623L).build());
-            } catch (TelegramApiException e) {
-                throw new RuntimeException(e);
-            }
-        }
 
         if (message.hasText()) {
             isState = text(bot, message);
         }
 
-
         if (isState) {
-            rootMapper.parse(states.getAll(message.getChatId()), bot, message);
+            mapper.executeLogic(states.getAll(message.getChatId()), bot, message);
         }
     }
 
     private boolean text(TelegramLongPollingBot bot, Message message) {
         String text = message.getText();
-        var commands = roleCommands.get(states.getFirstState(message.getChatId()));
+        var commands = mapper.getCommands(states.getFirstState(message.getChatId()));
 
 
         //выделение команды
@@ -74,7 +49,7 @@ public class MessageHandler implements Handler {
 
         try {
             if (commands.containsKey(text)) {
-                bot.execute(commands.get(text).doSomethings(message));
+                commands.get(text).exe(bot, message);
             } else if (states.isDefault(message.getChatId())) {// В дефолтном сотоянии могут быть только команды
                 bot.execute(SendMessage.builder()
                         .text("Такой команды нет")
