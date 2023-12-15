@@ -7,7 +7,7 @@ import ru.rengen.Ulgid.telegram.logic.Logic;
 
 @Getter
 public abstract class StateCommand implements Command{
-    Logic logic;
+    protected Logic logic;
 
     @Override
     public void exe(DefaultAbsSender bot, Message message) {

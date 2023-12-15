@@ -4,12 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.rengen.Ulgid.telegram.handlers.message.newA.HelpAbstract;
 
+import java.util.List;
+
 @Component
-public class Help extends HelpAbstract {
+class Help extends HelpAbstract implements Company {
     @Autowired
-    private Help(CompanyCommandList list){
-        list.register(this);
-        // Нет гарантии, что все команды уже инициализировались и зарегестрировались, чтобы брать их из листа
-        commands = getHelpText()
+    private Help(List<Company> list){
+        list.add(this);
+        commands = getHelpText(list);
     }
 }

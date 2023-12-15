@@ -6,7 +6,6 @@ import org.telegram.telegrambots.bots.DefaultAbsSender;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.rengen.Ulgid.telegram.handlers.message.newA.Command;
-import ru.rengen.Ulgid.telegram.handlers.message.newA.CommandList;
 import ru.rengen.Ulgid.telegram.handlers.message.newA.StateCommand;
 import ru.rengen.Ulgid.telegram.logic.Logic;
 
@@ -21,21 +20,30 @@ public class Mapper {
     private Map<String, Map<String, Logic>> roleState;
 
     @Autowired
-    private Mapper(List<CommandList> lists) {
+    private Mapper(List<Command> list) {
         roleCommand = new HashMap<>();
         roleState = new HashMap<>();
-        for (CommandList list : lists) {
-            Map<String, Command> commands = new HashMap<>();
-            Map<String, Logic> logics = new HashMap<>();
-            for (Command command : list.getCommands()) {
-                commands.put(command.getCommand(), command);
-                if (command instanceof StateCommand) {
-                    Logic logic = ((StateCommand)command).getLogic();
-                    logics.put(logic.myState(), logic);
-                }
+
+        for (Command command : list) {
+            Map<String, Command> commands;
+            Map<String, Logic> logics;
+            var role = command.getRole();
+            commands = roleCommand.get(role);
+            if (commands == null) {
+                commands = new HashMap<>();
+                logics = new HashMap<>();
+
+                roleCommand.put(role, commands);
+                roleState.put(role, logics);
+            } else {
+                logics = roleState.get(role);
             }
-            roleCommand.put(list.getRole(), commands);
-            roleState.put(list.getRole(), logics);
+
+            commands.put(command.getCommand(), command);
+            if (command instanceof StateCommand) {
+                Logic logic = ((StateCommand)command).getLogic();
+                logics.put(logic.myState(), logic);
+            }
         }
     }
 
