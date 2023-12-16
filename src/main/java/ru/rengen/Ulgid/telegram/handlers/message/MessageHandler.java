@@ -9,14 +9,15 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ru.rengen.Ulgid.telegram.handlers.Handler;
-import ru.rengen.Ulgid.telegram.handlers.states.MyState;
+import ru.rengen.Ulgid.telegram.MyStateMachine;
+import ru.rengen.Ulgid.telegram.handlers.Mapper;
 
 
 @Component
 @Slf4j
 public class MessageHandler implements Handler {
     @Autowired
-    private MyState states;
+    private MyStateMachine states;
     @Autowired
     private Mapper mapper;
 
