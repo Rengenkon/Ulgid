@@ -1,22 +1,13 @@
 package ru.rengen.Ulgid.telegram.handlers.states;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 @Component
 public class MyState {
-    private final String[] DEFAULT_STATES;
-    private final int DEFAULT_STATE;
-    private final Map<Long, ArrayList<String>> states;
-
-    @Autowired
-    private MyState(Roles roles) {
-        states = new HashMap<>();
-        DEFAULT_STATES = roles.getRoles();
-        DEFAULT_STATE = roles.indDefaultRole();
-    }
+    private final Map<Long, ArrayList<String>> states = new HashMap<>();
+    private final static String DEFAULT= "User";
 
     public void setState(Long id, String state) {
         var stateList = states.get(id);
@@ -32,7 +23,7 @@ public class MyState {
         var stateList = states.get(id);
         if (stateList == null) {
             stateList = new ArrayList<>();
-            stateList.add(DEFAULT_STATES[DEFAULT_STATE]);
+            stateList.add(DEFAULT);
             states.put(id, stateList);
         }
         return stateList.getFirst();

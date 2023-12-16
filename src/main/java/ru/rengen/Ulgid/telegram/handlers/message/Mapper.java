@@ -16,8 +16,8 @@ import java.util.Map;
 
 @Component
 public class Mapper {
-    private Map<String, Map<String, Command>> roleCommand;
-    private Map<String, Map<String, Logic>> roleState;
+    private final Map<String, Map<String, Command>> roleCommand;
+    private final Map<String, Map<String, Logic>> roleState;
 
     @Autowired
     private Mapper(List<Command> list) {
