@@ -16,7 +16,7 @@ public class MyStateMachine {
     }
 
     public void addState(Long id, String state) {
-        states.get(id).addLast(state);
+//        states.get(id).addLast(state);
     }
 
     public String getFirstState(Long id) {
@@ -26,11 +26,13 @@ public class MyStateMachine {
             stateList.add(DEFAULT);
             states.put(id, stateList);
         }
-        return stateList.getFirst();
+//        return stateList.getFirst();
+        return null;
     }
 
     public String removeLastState(Long id) {
-        return states.get(id).removeLast();
+        return null;
+//        return states.get(id).removeLast();
     }
 
     public void removeState(Long id) {
