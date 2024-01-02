@@ -1,4 +1,4 @@
-package ru.rengen.Ulgid.telegram;
+package ru.rengen.ulgidtelegram;
 
 import org.springframework.stereotype.Component;
 

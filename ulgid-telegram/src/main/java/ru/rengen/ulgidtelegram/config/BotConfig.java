@@ -1,4 +1,4 @@
-package ru.rengen.Ulgid.telegram.config;
+package ru.rengen.ulgidtelegram.config;
 
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;

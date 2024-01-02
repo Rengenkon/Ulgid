@@ -1,16 +1,13 @@
-package ru.rengen.Ulgid.telegram;
+package ru.rengen.ulgidtelegram;
 
-
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
-import ru.rengen.Ulgid.telegram.config.BotConfig;
-import ru.rengen.Ulgid.telegram.handlers.Handler;
+import ru.rengen.ulgidtelegram.config.BotConfig;
+import ru.rengen.ulgidtelegram.handlers.Handler;
 
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -18,14 +15,11 @@ import java.util.stream.Collectors;
 @Component
 public class UlgidBot extends TelegramLongPollingBot {
     private final BotConfig config;
-
-    @Autowired
     private final Map<String, Handler> handlers;
 
 
 
     @Autowired
-
     private UlgidBot(BotConfig config, List<Handler> handlers) {
         super(config.getToken());
         this.config = config;

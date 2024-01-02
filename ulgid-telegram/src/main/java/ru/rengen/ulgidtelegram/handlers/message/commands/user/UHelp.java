@@ -1,8 +1,8 @@
-package ru.rengen.Ulgid.telegram.handlers.message.commands.user;
+package ru.rengen.ulgidtelegram.handlers.message.commands.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.rengen.Ulgid.telegram.handlers.message.commands.HelpAbstract;
+import ru.rengen.ulgidtelegram.handlers.message.commands.HelpAbstract;
 
 import java.util.List;
 

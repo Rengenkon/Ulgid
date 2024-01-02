@@ -1,4 +1,4 @@
-package ru.rengen.Ulgid;
+package ru.rengen.ulgidtelegram;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,8 +6,8 @@ import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
-import ru.rengen.Ulgid.telegram.config.BotConfig;
-import ru.rengen.Ulgid.telegram.UlgidBot;
+import ru.rengen.ulgidtelegram.config.BotConfig;
+import ru.rengen.ulgidtelegram.UlgidBot;
 
 @Slf4j
 @Component

@@ -1,4 +1,4 @@
-package ru.rengen.Ulgid.telegram.handlers;
+package ru.rengen.ulgidtelegram.handlers;
 
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.interfaces.BotApiObject;

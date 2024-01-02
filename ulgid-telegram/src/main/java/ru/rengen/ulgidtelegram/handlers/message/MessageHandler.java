@@ -1,4 +1,4 @@
-package ru.rengen.Ulgid.telegram.handlers.message;
+package ru.rengen.ulgidtelegram.handlers.message;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +8,9 @@ import org.telegram.telegrambots.meta.api.interfaces.BotApiObject;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import ru.rengen.Ulgid.telegram.handlers.Handler;
-import ru.rengen.Ulgid.telegram.MyStateMachine;
-import ru.rengen.Ulgid.telegram.handlers.Mapper;
+import ru.rengen.ulgidtelegram.handlers.Handler;
+import ru.rengen.ulgidtelegram.MyStateMachine;
+import ru.rengen.ulgidtelegram.handlers.Mapper;
 
 
 @Component

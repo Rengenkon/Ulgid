@@ -1,13 +1,13 @@
-package ru.rengen.Ulgid.telegram.handlers;
+package ru.rengen.ulgidtelegram.handlers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.DefaultAbsSender;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import ru.rengen.Ulgid.telegram.handlers.message.commands.Command;
-import ru.rengen.Ulgid.telegram.handlers.message.commands.StateCommand;
-import ru.rengen.Ulgid.telegram.logic.Logic;
+import ru.rengen.ulgidtelegram.handlers.message.commands.Command;
+import ru.rengen.ulgidtelegram.handlers.message.commands.StateCommand;
+import ru.rengen.ulgidtelegram.logic.Logic;
 
 import java.util.HashMap;
 import java.util.Iterator;

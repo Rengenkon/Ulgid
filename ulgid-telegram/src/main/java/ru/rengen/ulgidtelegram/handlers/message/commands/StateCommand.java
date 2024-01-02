@@ -1,9 +1,9 @@
-package ru.rengen.Ulgid.telegram.handlers.message.commands;
+package ru.rengen.ulgidtelegram.handlers.message.commands;
 
 import lombok.Getter;
 import org.telegram.telegrambots.bots.DefaultAbsSender;
 import org.telegram.telegrambots.meta.api.objects.Message;
-import ru.rengen.Ulgid.telegram.logic.Logic;
+import ru.rengen.ulgidtelegram.logic.Logic;
 
 @Getter
 public abstract class StateCommand implements Command{

@@ -1,15 +1,15 @@
-package ru.rengen.Ulgid.telegram.handlers.message.commands.company;
+package ru.rengen.ulgidtelegram.handlers.message.commands.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.rengen.Ulgid.telegram.handlers.message.commands.HelpAbstract;
+import ru.rengen.ulgidtelegram.handlers.message.commands.HelpAbstract;
 
 import java.util.List;
 
 @Component
-class CHelp extends HelpAbstract implements Company {
+class AHelp extends HelpAbstract implements Admin {
     @Autowired
-    private CHelp(List<Company> list){
+    private AHelp(List<Admin> list){
         list.add(this);
         commands = getHelpText(list);
     }

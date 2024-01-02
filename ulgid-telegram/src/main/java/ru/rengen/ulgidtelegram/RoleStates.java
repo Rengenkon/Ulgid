@@ -1,4 +1,4 @@
-package ru.rengen.Ulgid.telegram;
+package ru.rengen.ulgidtelegram;
 
 public class RoleStates {
     public static final String USER = "user";
